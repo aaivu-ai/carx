@@ -47,6 +47,7 @@ struct SingleSensorChartView: View {
                             .interpolationMethod(.catmullRom)
                     }
                     .chartYScale(domain: pid.range)
+                    .chartPlotStyle { $0.clipped() }
                     .chartXAxis { AxisMarks(values: .automatic(desiredCount: 4)) }
                     .frame(maxHeight: .infinity)
                     .carxCard()
