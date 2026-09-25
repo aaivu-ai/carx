@@ -47,8 +47,12 @@ struct MultiSeriesChartView: View {
     }
 
     var body: some View {
-        let now = Date()
-        let xDomain = now.addingTimeInterval(-windowSeconds)...now
+        // Anchor the X axis to the newest sample (not wall-clock time at render), so fresh
+        // samples never land past the right edge; a small trailing pad keeps the line in view.
+        let latest = seriesPIDs
+            .compactMap { coordinator.telemetry.samples(for: $0.id, within: windowSeconds).last?.timestamp }
+            .max() ?? Date()
+        let xDomain = latest.addingTimeInterval(-windowSeconds)...latest.addingTimeInterval(windowSeconds * 0.03)
 
         VStack(alignment: .leading, spacing: 12) {
             legend
@@ -121,7 +125,7 @@ struct MultiSeriesChartView: View {
                     ForEach(coordinator.telemetry.samples(for: pid.id, within: windowSeconds)) { sample in
                         LineMark(
                             x: .value("Time", sample.timestamp),
-                            y: .value(pid.name, sample.value),
+                            y: .value(pid.name, sample.value.clamped(to: group.range)),
                             series: .value("Channel", pid.name)
                         )
                         .foregroundStyle(color(for: pid))
@@ -133,6 +137,7 @@ struct MultiSeriesChartView: View {
             .chartYScale(domain: group.range)
             .chartXAxis { AxisMarks(values: .automatic(desiredCount: 4)) }
             .chartYAxis { AxisMarks(position: .leading, values: .automatic(desiredCount: 3)) }
+            .chartPlotStyle { $0.clipped() }
             .frame(height: 150)
         }
         .carxCard()
