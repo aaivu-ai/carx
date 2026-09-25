@@ -17,6 +17,13 @@ final class CarPlayDashboardController {
         return template
     }()
 
+    private lazy var chartsTemplate: CPGridTemplate = {
+        let template = CPGridTemplate(title: "Charts", gridButtons: [])
+        template.tabTitle = "Charts"
+        template.tabImage = UIImage(systemName: "chart.xyaxis.line")
+        return template
+    }()
+
     private lazy var dtcTemplate: CPInformationTemplate = {
         let template = CPInformationTemplate(title: "Trouble Codes", layout: .leading, items: [], actions: [clearCodesAction])
         template.tabTitle = "Codes"
@@ -34,7 +41,7 @@ final class CarPlayDashboardController {
     }
 
     func start() {
-        let tabBar = CPTabBarTemplate(templates: [liveDataTemplate, dtcTemplate])
+        let tabBar = CPTabBarTemplate(templates: [liveDataTemplate, chartsTemplate, dtcTemplate])
         interfaceController.setRootTemplate(tabBar, animated: true, completion: nil)
         refreshTask = Task { [weak self] in
             while let self, !Task.isCancelled {
@@ -62,6 +69,23 @@ final class CarPlayDashboardController {
             return CPListItem(text: pid.name, detailText: text)
         }
         liveDataTemplate.updateSections([CPListSection(items: items)])
+
+        // CarPlay grids show at most 8 buttons; each button's image is a rendered trend chart.
+        // CarPlay documents no fixed grid image size, only "size to the car screen's display scale".
+        let imageSize = CGSize(width: 200, height: 150)
+        let scale = interfaceController.carTraitCollection.displayScale
+        let chartButtons: [CPGridButton] = pack.defaultDashboardPIDIDs.prefix(8).compactMap { pidID in
+            guard let pid = pidsByID[pidID] else { return nil }
+            let image = CarPlayChartRenderer.tileImage(
+                pid: pid,
+                samples: telemetry.samples(for: pidID, within: 60),
+                value: telemetry.value(for: pidID),
+                size: imageSize,
+                scale: scale
+            )
+            return CPGridButton(titleVariants: [pid.name], image: image, handler: nil)
+        }
+        chartsTemplate.updateGridButtons(chartButtons)
 
         let dtcItems = telemetry.currentDTCs.map {
             CPInformationItem(title: $0.code, detail: $0.description)

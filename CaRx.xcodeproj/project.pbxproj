@@ -11,6 +11,7 @@
 		000000000000000000000006 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000005 /* MainTabView.swift */; };
 		000000000000000000000008 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000007 /* RootView.swift */; };
 		00000000000000000000000B /* CarPlayDashboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00000000000000000000000A /* CarPlayDashboardController.swift */; };
+		0000000000000000000000F2 /* CarPlayChartRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0000000000000000000000F1 /* CarPlayChartRenderer.swift */; };
 		00000000000000000000000D /* CarPlaySceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00000000000000000000000C /* CarPlaySceneDelegate.swift */; };
 		000000000000000000000011 /* ChartBuilderSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000010 /* ChartBuilderSheet.swift */; };
 		000000000000000000000013 /* ChartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000012 /* ChartsView.swift */; };
@@ -70,6 +71,8 @@
 		000000000000000000000005 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		000000000000000000000007 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		00000000000000000000000A /* CarPlayDashboardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarPlayDashboardController.swift; sourceTree = "<group>"; };
+		0000000000000000000000F1 /* CarPlayChartRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarPlayChartRenderer.swift; sourceTree = "<group>"; };
+		0000000000000000000000F3 /* CaRx-CarPlaySim.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "CaRx-CarPlaySim.entitlements"; sourceTree = "<group>"; };
 		00000000000000000000000C /* CarPlaySceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarPlaySceneDelegate.swift; sourceTree = "<group>"; };
 		000000000000000000000010 /* ChartBuilderSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartBuilderSheet.swift; sourceTree = "<group>"; };
 		000000000000000000000012 /* ChartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsView.swift; sourceTree = "<group>"; };
@@ -171,6 +174,7 @@
 		000000000000000000000009 /* CarPlay */ = {
 			isa = PBXGroup;
 			children = (
+				0000000000000000000000F1 /* CarPlayChartRenderer.swift */,
 				00000000000000000000000A /* CarPlayDashboardController.swift */,
 				00000000000000000000000C /* CarPlaySceneDelegate.swift */,
 			);
@@ -286,6 +290,7 @@
 			isa = PBXGroup;
 			children = (
 				000000000000000000000051 /* Assets.xcassets */,
+				0000000000000000000000F3 /* CaRx-CarPlaySim.entitlements */,
 				000000000000000000000053 /* CaRx.entitlements */,
 				000000000000000000000054 /* Info.plist */,
 				000000000000000000000055 /* dtc_descriptions.json */,
@@ -479,6 +484,7 @@
 				000000000000000000000004 /* CaRxApp.swift in Sources */,
 				000000000000000000000006 /* MainTabView.swift in Sources */,
 				000000000000000000000008 /* RootView.swift in Sources */,
+				0000000000000000000000F2 /* CarPlayChartRenderer.swift in Sources */,
 				00000000000000000000000B /* CarPlayDashboardController.swift in Sources */,
 				00000000000000000000000D /* CarPlaySceneDelegate.swift in Sources */,
 				000000000000000000000011 /* ChartBuilderSheet.swift in Sources */,
@@ -553,6 +559,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = CaRx/Resources/CaRx.entitlements;
+				"CODE_SIGN_ENTITLEMENTS[sdk=iphonesimulator*]" = "CaRx/Resources/CaRx-CarPlaySim.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -587,6 +594,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = CaRx/Resources/CaRx.entitlements;
+				"CODE_SIGN_ENTITLEMENTS[sdk=iphonesimulator*]" = "CaRx/Resources/CaRx-CarPlaySim.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
