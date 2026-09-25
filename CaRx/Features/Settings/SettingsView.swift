@@ -59,6 +59,19 @@ struct SettingsView: View {
                         }
                     }
 
+                    Section("About CaRx") {
+                        Text("App from aaivu.co — TheSaravanas Group of Companies")
+                            .font(.subheadline.weight(.semibold))
+                        Text("CaRx turns your phone into a live OBD-II diagnostic dashboard. Connect a Bluetooth LE or Wi-Fi ELM327 adapter to watch configurable gauges and charts, read and clear trouble codes, and keep an eye on your vehicle's sensors, with a simplified view on CarPlay.")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                        if let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String {
+                            LabeledContent("Version", value: version)
+                                .font(.caption)
+                        }
+                    }
+                    .listRowBackground(CaRxTheme.surface.opacity(0.6))
+
                     Section("About CarPlay") {
                         Text("Full gauges and charts are on the iPhone screen. CarPlay shows a simplified, glanceable list of live values and DTC status, per Apple's CarPlay template restrictions for non-navigation apps.")
                             .font(.caption)
