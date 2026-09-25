@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!--
+	CarPlay entitlement key(s) go here once Apple approves the CarPlay entitlement
+	request for an appropriate category (see §8b of CaRx_iOS_CarPlay_Development_Prompt.md).
+	Xcode adds the correct key automatically when you enable the "CarPlay" capability
+	against a provisioning profile that includes it -- do not guess the key by hand.
+	Local Simulator testing of the CarPlay scene does not require this entitlement.
+	-->
+</dict>
+</plist>

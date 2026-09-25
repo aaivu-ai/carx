@@ -1,0 +1,55 @@
+{
+  "id": "ram1500_2020",
+  "displayName": "2020 Ram 1500 (5.7L HEMI / 3.6L Pentastar / 3.0L EcoDiesel)",
+  "make": "Ram",
+  "model": "1500 (DT platform)",
+  "year": 2020,
+  "ecuAccessNotes": "FCA/Stellantis CAN, mode 22 extended PIDs, ECM header 7E0. Not published by FCA; community-sourced placeholders -- confirm with the Advanced > Raw PID Discovery tool against your specific engine/trim before trusting these readings. DEF level and diesel boost only apply to EcoDiesel trims.",
+  "enhancedPIDs": [
+    {
+      "id": "RAM_TRANS_TEMP",
+      "name": "Transmission Fluid Temp",
+      "request": "221436",
+      "header": "7E0",
+      "unit": "°F",
+      "minValue": -40,
+      "maxValue": 300,
+      "verified": false,
+      "decoderKind": "temperatureFahrenheit"
+    },
+    {
+      "id": "RAM_OIL_TEMP",
+      "name": "Engine Oil Temperature",
+      "request": "221157",
+      "header": "7E0",
+      "unit": "°F",
+      "minValue": -40,
+      "maxValue": 320,
+      "verified": false,
+      "decoderKind": "temperatureFahrenheit"
+    },
+    {
+      "id": "RAM_TURBO_BOOST",
+      "name": "Turbo Boost Pressure (EcoDiesel)",
+      "request": "221AC1",
+      "header": "7E0",
+      "unit": "PSI",
+      "minValue": -14.7,
+      "maxValue": 35.0,
+      "verified": false,
+      "decoderKind": "boostPsiRelative"
+    },
+    {
+      "id": "RAM_DEF_LEVEL",
+      "name": "DEF Level (EcoDiesel)",
+      "request": "221AD2",
+      "header": "7E0",
+      "unit": "%",
+      "minValue": 0,
+      "maxValue": 100,
+      "verified": false,
+      "decoderKind": "percent"
+    }
+  ],
+  "defaultDashboardPIDIDs": ["STD_RPM", "RAM_TRANS_TEMP", "RAM_OIL_TEMP", "STD_SPEED", "RAM_TURBO_BOOST", "RAM_DEF_LEVEL"]
+}

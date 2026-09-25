@@ -1,0 +1,44 @@
+{
+  "id": "bmw_2015",
+  "displayName": "2015 BMW (N20/N55-era 4/6-cyl)",
+  "make": "BMW",
+  "model": "3-Series / X-Series (N20/N55 platform)",
+  "year": 2015,
+  "ecuAccessNotes": "ISO 15765 CAN, mode 22 extended PIDs. Diagnostic gateway header shown here (6F1) is typical but varies by chassis/options -- confirm with the Advanced > Raw PID Discovery tool against your specific car before trusting these readings. Not published by BMW; community-sourced placeholders.",
+  "enhancedPIDs": [
+    {
+      "id": "BMW_OIL_TEMP",
+      "name": "Engine Oil Temperature",
+      "request": "221155",
+      "header": "6F1",
+      "unit": "°F",
+      "minValue": -40,
+      "maxValue": 320,
+      "verified": false,
+      "decoderKind": "temperatureFahrenheit"
+    },
+    {
+      "id": "BMW_BATTERY_IBS_VOLTAGE",
+      "name": "Battery (IBS) Voltage",
+      "request": "22F44C",
+      "header": "6F1",
+      "unit": "V",
+      "minValue": 8,
+      "maxValue": 16,
+      "verified": false,
+      "decoderKind": "voltage"
+    },
+    {
+      "id": "BMW_TURBO_BOOST",
+      "name": "Turbo Boost Pressure",
+      "request": "22185B",
+      "header": "6F1",
+      "unit": "PSI",
+      "minValue": -14.7,
+      "maxValue": 30.0,
+      "verified": false,
+      "decoderKind": "boostPsiRelative"
+    }
+  ],
+  "defaultDashboardPIDIDs": ["STD_RPM", "BMW_OIL_TEMP", "BMW_BATTERY_IBS_VOLTAGE", "BMW_TURBO_BOOST", "STD_SPEED", "STD_ECT"]
+}

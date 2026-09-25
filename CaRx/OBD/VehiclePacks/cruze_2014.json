@@ -1,0 +1,44 @@
+{
+  "id": "cruze_2014",
+  "displayName": "2014 Chevrolet Cruze (1.4L Turbo)",
+  "make": "Chevrolet",
+  "model": "Cruze",
+  "year": 2014,
+  "ecuAccessNotes": "GM-LAN, mode 22 extended PIDs. ECM header 7E0, TCM header 7E1. Values below are carried over from the validated carx-android sibling app.",
+  "enhancedPIDs": [
+    {
+      "id": "CRUZE_BOOST",
+      "name": "Turbo Boost Pressure",
+      "request": "2211B0",
+      "header": "7E0",
+      "unit": "PSI",
+      "minValue": -14.7,
+      "maxValue": 30.0,
+      "verified": true,
+      "decoderKind": "boostPsiRelative"
+    },
+    {
+      "id": "CRUZE_TRANS_TEMP",
+      "name": "Transmission Fluid Temp",
+      "request": "221945",
+      "header": "7E1",
+      "unit": "°F",
+      "minValue": -40,
+      "maxValue": 300,
+      "verified": true,
+      "decoderKind": "temperatureFahrenheit"
+    },
+    {
+      "id": "CRUZE_ECT_HIRES",
+      "name": "Engine Coolant Temp (high-res)",
+      "request": "221003",
+      "header": "7E0",
+      "unit": "°F",
+      "minValue": -40,
+      "maxValue": 260,
+      "verified": true,
+      "decoderKind": "temperatureFahrenheit"
+    }
+  ],
+  "defaultDashboardPIDIDs": ["STD_RPM", "CRUZE_BOOST", "CRUZE_TRANS_TEMP", "STD_SPEED", "CRUZE_ECT_HIRES", "STD_LOAD"]
+}
